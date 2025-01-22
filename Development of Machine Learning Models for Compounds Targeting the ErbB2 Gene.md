@@ -2,12 +2,12 @@
 # Project Overview
 The project revolves around using machine learning (ML) to analyze and predict the bioactivity of compounds targeting the ErbB2 gene (CHEMBL1824). The ErbB2 gene, also known as HER2, is significant in cancer research, particularly in breast cancer. By leveraging bioactivity data from the ChEMBL database, the goal is to classify compounds into three categories—active, inactive, and intermediate—and build regression models to predict their potency using molecular descriptors.
 
-# 1. Data Collection
+## 1. Data Collection
 Source: ChEMBL database.
 Gene of Interest: ErbB2 (CHEMBL1824).
 Bioactivity Data: Filtered for compounds with IC50 values in nanomolar (nM) units, which indicate the concentration required to inhibit 50% of a biological target.
 
-# 2. Data Preprocessing
+## 2. Data Preprocessing
 Classification of Bioactivity:
 Active: IC50 < 1000 nM.
 Inactive: IC50 > 10,000 nM.
@@ -18,7 +18,7 @@ IC50 values are converted to pIC50 (negative logarithm base 10), which ensures a
 pIC50=−log 10 (IC50 in molar units)
 This step standardizes the data and simplifies interpretation.
 
-# 3. Feature Engineering
+## 3. Feature Engineering
 Lipinski Descriptors:
 Christopher Lipinski's Rule of Five evaluates the drug-likeness of compounds based on:
 Molecular weight < 500 Da.
@@ -29,14 +29,14 @@ These descriptors are calculated for each compound to assess their suitability a
 Molecular Descriptors:
 Additional molecular descriptors are computed using PaDEL-Descriptor software, generating a set of 881 input features for each compound.
 
-# 4. Exploratory Data Analysis
+## 4. Exploratory Data Analysis
 Chemical Space Analysis:
 The distribution of Lipinski descriptors across active and inactive compounds is visualized via frequency plots, scatter plots (e.g., molecular weight vs. LogP), and box plots.
 Key Findings:
 Significant statistical differences were observed between active and inactive compounds for most descriptors, such as molecular weight, LogP, and hydrogen bond acceptors.
 These differences highlight patterns that the ML models can exploit to predict bioactivity.
 
-# 5. Model Building
+## 5. Model Building
 Dataset Preparation:
 
 X matrix: Features (molecular descriptors).
@@ -51,18 +51,18 @@ R-squared (R²): Measures the proportion of variance explained by the model.
 RMSE: Root Mean Square Error, quantifying prediction error.
 Computation Time: Efficiency of the model.
 
-# 6. Model Performance
+## 6. Model Performance
 Top Performers (High R²):
 ExtraTreesRegressor, DecisionTreeRegressor, ExtraTreeRegressor, GaussianProcessRegressor, and RandomForestRegressor excelled in predicting pIC50 values, achieving higher R² values (around 0.89–0.90).
 Fastest Models (Low Computation Time):
 Lasso, LassoLars, DummyRegressor, DecisionTreeRegressor, and ExtraTreeRegressor completed predictions in nearly zero seconds, making them efficient for quick analysis.
 
-# 7. Statistical Analysis
+## 7. Statistical Analysis
 Significant Findings:
 Active and inactive compounds showed statistically significant differences in pIC50 values and most Lipinski descriptors (except for the number of hydrogen bond donors).
 This supports the use of these features for predictive modeling.
 
-# 8. Conclusions and Next Steps
+## 8. Conclusions and Next Steps
 Conclusions:
 The ML models developed in this project successfully predict the bioactivity of compounds targeting the ErbB2 gene.
 High-performing models like ExtraTreesRegressor and RandomForestRegressor are effective for this task.
